@@ -23,7 +23,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "CoffeeShop"
-include(":userApp")
-include(":adminapp")
+include(":user-app")
+include(":admin-app")
 include(":shared")
 include(":ui-components")
