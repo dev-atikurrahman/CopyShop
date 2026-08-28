@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CoffeeShop</string>
+
+
+
+
+    // Onboarding text
+    <string name="coffee_made_easy">Coffee\nMade Easy</string>
+    <string name="order_your_favorite_">Order your favorite coffee in seconds with\nan for speed and simplicity.</string>
+    <string name="get_started">Get Started</string>
+
 </resources>

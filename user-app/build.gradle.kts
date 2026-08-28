@@ -44,10 +44,6 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.navigation.compose)
 
-    // Image loading
-    implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
-    implementation(libs.coil.svg)
 
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
