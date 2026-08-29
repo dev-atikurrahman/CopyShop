@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".di.CoffeeShopApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="true"
@@ -14,11 +15,10 @@
         android:theme="@style/Theme.App.Splash">
         <activity
             android:name=".MainActivity"
-            tools:ignore="Instantiatable"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.CoffeeShop"
             android:exported="true"
-            >
+            android:theme="@style/Theme.CoffeeShop"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="Instantiatable">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
