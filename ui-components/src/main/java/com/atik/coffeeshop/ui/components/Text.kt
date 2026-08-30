@@ -31,6 +31,7 @@ val Poppins = FontFamily(
     ),
 )
 
+// Heading style
 private val HeadingTextStyle = TextStyle(
     fontSize = 22.sp,
     fontWeight = FontWeight.SemiBold
@@ -41,31 +42,38 @@ private val OnboardingTextStyle = TextStyle(
     fontFamily = Poppins
 )
 
-private val TitleTextStyle = TextStyle(
-    fontSize = 18.sp,
-    fontWeight = FontWeight.SemiBold
-)
-
+// Title style
 private val SubtitleTextStyle = TextStyle(
     fontSize = 16.sp,
     fontWeight = FontWeight.SemiBold
 )
 
+// Normal style
 private val BodyTextStyle = TextStyle(
     fontSize = 16.sp,
-    fontWeight = FontWeight.SemiBold
+    fontWeight = FontWeight.SemiBold,
+    fontFamily = Poppins
 )
+
+// Button text style
 private val ButtonTextStyle = TextStyle(
     fontSize = 16.sp,
     fontWeight = FontWeight.Normal
 )
 
+// Items Text style
+private val TitleTextStyle = TextStyle(
+    fontSize = 18.sp,
+    fontWeight = FontWeight.Medium,
+    fontFamily = Poppins
+)
 private val CaptionTextStyle = TextStyle(
     fontSize = 14.sp,
     fontWeight = FontWeight.Normal,
     fontFamily = Poppins
 )
 
+// Reusable Text
 @Composable
 fun HeadingText(
     text: String,
@@ -80,7 +88,7 @@ fun HeadingText(
         style = HeadingTextStyle,
         color = color,
         maxLines = maxLines,
-        overflow = overflow
+        overflow = overflow,
     )
 }
 
@@ -88,7 +96,7 @@ fun HeadingText(
 fun OnboardingHeading(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = Color.Black,
+    color: Color,
     maxLines: Int = Int.MAX_VALUE,
     overflow: TextOverflow = TextOverflow.Clip
 ) {
@@ -106,7 +114,64 @@ fun OnboardingHeading(
 fun TitleText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = Color.Black,
+    color: Color,
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Clip
+) {
+    Text(
+        text = text,
+        modifier = modifier,
+        style = TitleTextStyle,
+        color = color,
+        maxLines = maxLines,
+        overflow = overflow
+    )
+}
+
+
+// Button text
+@Composable
+fun ButtonText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color,
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Clip
+) {
+    Text(
+        text = text,
+        modifier = modifier,
+        style = ButtonTextStyle,
+        color = color,
+        maxLines = maxLines,
+        overflow = overflow
+    )
+}
+
+
+// Item title and description text
+@Composable
+fun BodyText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color,
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Clip
+) {
+    Text(
+        text = text,
+        modifier = modifier,
+        style = BodyTextStyle,
+        color = color,
+        maxLines = maxLines,
+        overflow = overflow
+    )
+}
+@Composable
+fun PriceText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color,
     maxLines: Int = Int.MAX_VALUE,
     overflow: TextOverflow = TextOverflow.Clip
 ) {
@@ -121,48 +186,32 @@ fun TitleText(
 }
 
 @Composable
-fun BodyText(
-    text: String,
-    modifier: Modifier = Modifier,
-    color: Color = Color.Black,
-    maxLines: Int = Int.MAX_VALUE,
-    overflow: TextOverflow = TextOverflow.Clip
-) {
-    Text(
-        text = text,
-        modifier = modifier,
-        style = BodyTextStyle,
-        color = color,
-        maxLines = maxLines,
-        overflow = overflow
-    )
-}
-
-@Composable
-fun ButtonText(
-    text: String,
-    modifier: Modifier = Modifier,
-    color: Color = Color.Black,
-    maxLines: Int = Int.MAX_VALUE,
-    overflow: TextOverflow = TextOverflow.Clip
-) {
-    Text(
-        text = text,
-        modifier = modifier,
-        style = ButtonTextStyle,
-        color = color,
-        maxLines = maxLines,
-        overflow = overflow
-    )
-}
-
-@Composable
 fun CaptionText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = Color.Gray,
-    maxLines: Int = 6,
+    color: Color,
+    maxLines: Int,
     overflow: TextOverflow = TextOverflow.Ellipsis
+) {
+    Text(
+        text = text,
+        modifier = modifier,
+        style = CaptionTextStyle,
+        color = color,
+        maxLines = maxLines,
+        overflow = overflow
+    )
+}
+
+
+// hints text
+@Composable
+fun HintText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color,
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Clip
 ) {
     Text(
         text = text,

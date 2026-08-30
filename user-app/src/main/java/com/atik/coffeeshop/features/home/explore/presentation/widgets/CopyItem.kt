@@ -44,6 +44,7 @@ import com.atik.coffeeshop.core.sharedBoundsTransform
 import com.atik.coffeeshop.features.home.explore.data.models.ItemsModel
 import com.atik.coffeeshop.ui.components.BodyText
 import com.atik.coffeeshop.ui.components.CaptionText
+import com.atik.coffeeshop.ui.components.PriceText
 
 
 @OptIn(ExperimentalSharedTransitionApi::class)
@@ -82,13 +83,16 @@ fun SharedTransitionScope.CopyItem(
                         rememberSharedContentState(key = "title/${item.id}"),
                         animatedVisibilityScope = animatedVisibilityScope
                     ),
+                color = colorResource(R.color.black)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             CaptionText(
                 text = item.description,
-                modifier = Modifier.padding(horizontal = 8.dp)
+                modifier = Modifier.padding(horizontal = 8.dp),
+                color = colorResource(R.color.lightGray),
+                maxLines = 2
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -102,8 +106,9 @@ fun SharedTransitionScope.CopyItem(
                 verticalAlignment = Alignment.CenterVertically,
 
                 ) {
-                BodyText(
+                PriceText(
                     text = "$${item.price}",
+                    color = colorResource(R.color.black)
                 )
 
                 Box(

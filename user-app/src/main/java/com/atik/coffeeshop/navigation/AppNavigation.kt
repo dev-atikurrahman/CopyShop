@@ -37,7 +37,6 @@ fun CoffeeShopAppNavigation() {
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoutes = currentBackStackEntry?.destination?.route
 
-
     val showBottomBar = currentRoutes in listOf(
         Routes.Explore.route,
         Routes.Cart.route,

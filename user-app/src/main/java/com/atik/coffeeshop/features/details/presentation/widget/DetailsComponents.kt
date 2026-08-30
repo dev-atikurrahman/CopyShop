@@ -64,6 +64,7 @@ import com.atik.coffeeshop.features.home.explore.data.models.ItemsModel
 import com.atik.coffeeshop.ui.components.AuthButton
 import com.atik.coffeeshop.ui.components.BodyText
 import com.atik.coffeeshop.ui.components.CaptionText
+import com.atik.coffeeshop.ui.components.PriceText
 import com.atik.coffeeshop.ui.components.TitleText
 
 @OptIn(ExperimentalSharedTransitionApi::class)
@@ -147,7 +148,7 @@ enum class CoffeeSize { Small, Medium, Large }
 fun CoffeeSizeSelectorSection(
     selectedSize: CoffeeSize, onSizeSelected: (CoffeeSize) -> Unit
 ) {
-    TitleText(text = "Coffee Size")
+    TitleText(text = "Coffee Size",color = colorResource(R.color.black))
     Spacer(modifier = Modifier.height(8.dp))
 
     //var selectedSize by remember { mutableStateOf(CoffeeSize.Small) }
@@ -238,7 +239,7 @@ fun QuantityAndDetailsSection(
             Row(
                 modifier = Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically
             ) {
-                TitleText(text = "Qty")
+                TitleText(text = "Qty", color = colorResource(R.color.black))
                 Spacer(modifier = Modifier.width(12.dp))
 
                 // Increase, Decrease Btn
@@ -291,7 +292,7 @@ fun QuantityAndDetailsSection(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                BodyText(text = "4.5")
+                PriceText(text = "4.5", color = colorResource(R.color.black))
                 Icon(
                     imageVector = Icons.Rounded.StarRate,
                     contentDescription = "Star Icon",
@@ -302,12 +303,14 @@ fun QuantityAndDetailsSection(
 
         Spacer(modifier = Modifier.height(18.dp))
 
-        TitleText(text = "Description")
+        TitleText(text = "Description", color = colorResource(R.color.black))
 
         Spacer(modifier = Modifier.height(8.dp))
 
         CaptionText(
             text = item.description,
+            color = colorResource(R.color.black),
+            maxLines = 6
         )
     }
 
@@ -331,8 +334,9 @@ fun AddToCartAndPriceSection(
             containerColor = colorResource(R.color.green)
         )
 
-        BodyText(
+        PriceText(
             text = "$${item.price}",
+            color = colorResource(R.color.black)
         )
 
 

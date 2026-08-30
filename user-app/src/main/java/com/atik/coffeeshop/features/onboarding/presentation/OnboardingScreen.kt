@@ -46,15 +46,23 @@ fun OnboardingScreen(
         )
 
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .weight(1f),
             verticalArrangement = Arrangement.Bottom
 
         ) {
-            OnboardingHeading(text = stringResource(R.string.coffee_made_easy))
+            OnboardingHeading(
+                text = stringResource(R.string.coffee_made_easy),
+                color = colorResource(R.color.black)
+            )
 
             Spacer(modifier = Modifier.height(12.dp))
-            CaptionText(text = stringResource(R.string.order_your_favorite_))
+            CaptionText(
+                text = stringResource(R.string.order_your_favorite_),
+                color = colorResource(R.color.black),
+                maxLines = 2
+            )
 
             Spacer(modifier = Modifier.height(18.dp))
             OnboardingButton(

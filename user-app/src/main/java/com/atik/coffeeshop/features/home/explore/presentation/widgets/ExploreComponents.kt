@@ -50,7 +50,7 @@ import coil3.compose.AsyncImage
 import com.atik.coffeeshop.R
 import com.atik.coffeeshop.features.home.explore.data.models.Category
 import com.atik.coffeeshop.features.home.explore.data.models.ItemsModel
-import com.atik.coffeeshop.ui.components.BodyText
+import com.atik.coffeeshop.ui.components.HintText
 import com.atik.coffeeshop.ui.components.TitleText
 import com.atik.crashcourse.features.screens.explore.data.models.BannerModel
 import kotlin.math.abs
@@ -142,8 +142,9 @@ fun SearchBarSection() {
                     Spacer(modifier = Modifier.width(8.dp))
                     Box {
                         if (search.isEmpty()) {
-                            BodyText(
+                            HintText(
                                 text = "Search anything...",
+                                color = colorResource(R.color.lightGray)
                             )
                         }
                         innerTextField()
@@ -182,6 +183,7 @@ fun CategorySection(categories: List<Category>) {
     ) {
         TitleText(
             text = "Category",
+            color = colorResource(R.color.black)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -292,6 +294,7 @@ fun SharedTransitionScope.PopularCopySection(
     ) {
         TitleText(
             text = "Popular Coffees",
+            color = colorResource(R.color.black)
         )
 
         LazyRow(

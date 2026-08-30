@@ -56,7 +56,8 @@ fun DetailsTopBar(
 
         Spacer(modifier = Modifier.width(8.dp))
         TitleText(
-            text = "Back", modifier = Modifier.weight(1f)
+            text = "Back", modifier = Modifier.weight(1f),
+            color = colorResource(R.color.black)
         )
 
         Box(

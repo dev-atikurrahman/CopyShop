@@ -12,7 +12,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.atik.coffeeshop.features.auth.presentation.LoginScreen
 import com.atik.coffeeshop.features.onboarding.presentation.OnboardingScreen
+import com.atik.coffeeshop.navigation.AUTH_GRAPH_ROUTE
 import com.atik.coffeeshop.navigation.CoffeeShopAppNavigation
+import com.atik.coffeeshop.navigation.HOME_GRAPH_ROUTE
 import com.atik.coffeeshop.navigation.Routes
 import com.atik.coffeeshop.navigation.SplashViewModel
 import com.atik.coffeeshop.navigation.StartDestination
@@ -44,8 +46,8 @@ fun SplashNavHost(
 
             val actualStart = when (destination) {
                 StartDestination.Onboarding -> Routes.Onboarding.route
-                StartDestination.Login -> Routes.Login.route
-                StartDestination.Home -> HOME_ROUTE
+                StartDestination.Login -> AUTH_GRAPH_ROUTE
+                StartDestination.Home -> HOME_GRAPH_ROUTE
                 StartDestination.Loading -> Routes.Onboarding.route //
             }
 
@@ -54,7 +56,6 @@ fun SplashNavHost(
                 startDestination = actualStart,
                 route = SPLASH_ROOT_ROUTE
             ) {
-
                 composable(Routes.Onboarding.route) {
                     OnboardingScreen(
                         onGetStarted = {
@@ -65,18 +66,9 @@ fun SplashNavHost(
                     )
                 }
 
-                composable(Routes.Login.route) {
-                    LoginScreen(
-                        onLoginSuccess = {
-                            navController.navigate(HOME_ROUTE) {
-                                popUpTo(SPLASH_ROOT_ROUTE) { inclusive = true }
-                            }
-                        },
-                        onNavigateToRegister = {}
-                    )
-                }
+                authNavGraph(navController = navController)
 
-                composable(HOME_ROUTE) {
+                composable(HOME_GRAPH_ROUTE) {
                     CoffeeShopAppNavigation()
                 }
 

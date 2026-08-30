@@ -40,7 +40,7 @@ fun OnboardingButton(
         contentPadding = contentPadding,
         modifier = modifier,
     ) {
-        BodyText(text = text)
+        ButtonText(text = text, color = colorResource(R.color.black))
     }
 }
 
@@ -69,7 +69,7 @@ fun AuthButton(
         contentPadding = contentPadding,
         modifier = modifier
     ) {
-        ButtonText(text = text)
+        ButtonText(text = text, color = colorResource(R.color.white))
     }
 }
 
