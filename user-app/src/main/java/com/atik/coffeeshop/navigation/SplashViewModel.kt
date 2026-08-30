@@ -1,7 +1,9 @@
 package com.atik.coffeeshop.navigation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.atik.coffeeshop.features.auth.presentation.LoginViewModel.Companion.AUTH_TAG
 import com.atik.coffeeshop.shared.data.preferences.UserPreferences
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -35,6 +37,7 @@ class SplashViewModel(
                     else -> StartDestination.Home
                 }
             }.collect { destination ->
+                Log.d(AUTH_TAG, "SplashViewModel: emitting new destination = $destination")
                 _startDestination.value = destination
             }
         }
