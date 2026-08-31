@@ -12,6 +12,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.atik.coffeeshop.core.defaultEnterTransition
+import com.atik.coffeeshop.core.defaultExitTransition
 import com.atik.coffeeshop.features.auth.presentation.LoginScreen
 import com.atik.coffeeshop.features.auth.presentation.LoginViewModel.Companion.AUTH_TAG
 import com.atik.coffeeshop.features.auth.presentation.RegisterScreen
@@ -19,15 +21,7 @@ import com.atik.coffeeshop.navigation.AUTH_GRAPH_ROUTE
 import com.atik.coffeeshop.navigation.HOME_GRAPH_ROUTE
 import com.atik.coffeeshop.navigation.Routes
 
-val defaultEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
-    {
-        fadeIn(animationSpec = tween(durationMillis = 200))
-    }
 
-val defaultExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
-    {
-        fadeOut(animationSpec = tween(durationMillis = 150))
-    }
 
 fun NavGraphBuilder.authNavGraph(
     navController: NavHostController

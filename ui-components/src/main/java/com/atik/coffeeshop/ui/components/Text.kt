@@ -4,10 +4,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import com.atik.coffeeshop.ui.R
@@ -29,6 +31,25 @@ val Poppins = FontFamily(
         resId = R.font.poppins_bold,
         weight = FontWeight.Bold
     ),
+)
+
+/* Auth text style */
+private val AuthHeadingTextStyle = TextStyle(
+    fontSize = 28.sp,
+    fontWeight = FontWeight.Medium,
+    fontFamily = Poppins
+)
+
+private val AuthTextStyle = TextStyle(
+    fontSize = 16.sp,
+    fontWeight = FontWeight.Normal,
+    fontFamily = Poppins
+)
+
+private val AuthTextStyle2 = TextStyle(
+    fontSize = 16.sp,
+    fontWeight = FontWeight.Medium,
+    fontFamily = Poppins
 )
 
 // Heading style
@@ -72,6 +93,66 @@ private val CaptionTextStyle = TextStyle(
     fontWeight = FontWeight.Normal,
     fontFamily = Poppins
 )
+
+/*Auth Text */
+@Composable
+fun AuthHeadingText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color = colorResource(R.color.black),
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Clip
+) {
+    Text(
+        text = text,
+        modifier = modifier,
+        style = AuthHeadingTextStyle,
+        color = color,
+        maxLines = maxLines,
+        overflow = overflow,
+    )
+}
+
+@Composable
+fun AuthText(
+    text: String,
+    textAlign: TextAlign = TextAlign.Center,
+    modifier: Modifier = Modifier,
+    color: Color = colorResource(R.color.lightGray),
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Clip
+) {
+    Text(
+        text = text,
+        textAlign = textAlign,
+        modifier = modifier,
+        style = AuthTextStyle,
+        color = color,
+        maxLines = maxLines,
+        overflow = overflow,
+    )
+}
+
+@Composable
+fun AuthSectionTitleText(
+    text: String,
+    textAlign: TextAlign = TextAlign.Center,
+    modifier: Modifier = Modifier,
+    color: Color = colorResource(R.color.black),
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Clip
+) {
+    Text(
+        text = text,
+        textAlign = textAlign,
+        modifier = modifier,
+        style = AuthTextStyle2,
+        color = color,
+        maxLines = maxLines,
+        overflow = overflow,
+    )
+}
+
 
 // Reusable Text
 @Composable
@@ -209,7 +290,6 @@ fun CaptionText(
 fun HintText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color,
     maxLines: Int = Int.MAX_VALUE,
     overflow: TextOverflow = TextOverflow.Clip
 ) {
@@ -217,7 +297,6 @@ fun HintText(
         text = text,
         modifier = modifier,
         style = CaptionTextStyle,
-        color = color,
         maxLines = maxLines,
         overflow = overflow
     )

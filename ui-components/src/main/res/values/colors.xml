@@ -11,6 +11,7 @@
     <color name="indicator">#26E1C9A2</color>
     <color name="lightGray">#313131</color>
     <color name="darkBrown">#7E4616</color>
+    <color name="gray">#888888</color>
 
     <color name="appBackground">#FDF6EB</color>
     <color name="splash_brown">#C89B6B</color>

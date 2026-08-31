@@ -42,6 +42,7 @@ import coil3.request.crossfade
 import com.atik.coffeeshop.R
 import com.atik.coffeeshop.core.sharedBoundsTransform
 import com.atik.coffeeshop.features.home.explore.data.models.ItemsModel
+import com.atik.coffeeshop.ui.components.AppLoadingIndicator
 import com.atik.coffeeshop.ui.components.BodyText
 import com.atik.coffeeshop.ui.components.CaptionText
 import com.atik.coffeeshop.ui.components.PriceText
@@ -166,8 +167,8 @@ fun SharedTransitionScope.CopyItem(
                     modifier = Modifier.fillMaxSize()
                 )
                 if (isLoading) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(32.dp)
+                    AppLoadingIndicator(
+                        size = 64.dp
                     )
                 }
             }

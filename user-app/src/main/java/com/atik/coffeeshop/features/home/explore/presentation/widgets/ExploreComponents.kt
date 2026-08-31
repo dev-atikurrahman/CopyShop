@@ -144,7 +144,6 @@ fun SearchBarSection() {
                         if (search.isEmpty()) {
                             HintText(
                                 text = "Search anything...",
-                                color = colorResource(R.color.lightGray)
                             )
                         }
                         innerTextField()

@@ -1,6 +1,11 @@
 package com.atik.coffeeshop.ui.theme
 
+import android.R.attr.width
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import com.atik.coffeeshop.ui.R
 
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)

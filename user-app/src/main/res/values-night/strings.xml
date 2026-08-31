@@ -1,16 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CoffeeShop</string>
 
-    // Onboarding text
+    <!-- Onboarding Screen resources -->
     <string name="coffee_made_easy">Coffee\nMade Easy</string>
     <string name="order_your_favorite_">Order your favorite coffee in seconds with\nan for speed and simplicity.</string>
     <string name="get_started">Get Started</string>
-
-    <!-- Screen label name -->
-    <string name="cart">Cart</string>
-    <string name="favorite">Favorite</string>
-    <string name="profile">Profile</string>
-    <string name="explore">Explore</string>
 
     <!-- Login Screen resources -->
     <string name="login">Log in</string>
@@ -20,5 +14,6 @@
     <string name="password_hint">12345@hsa</string>
     <string name="remember_me">Remember me</string>
     <string name="forgot_password">Forgot Password?</string>
+
 
 </resources>

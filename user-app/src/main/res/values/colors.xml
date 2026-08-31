@@ -12,6 +12,9 @@
     <color name="lightGray">#313131</color>
     <color name="darkBrown">#7E4616</color>
 
+    <color name="gradient1">#D6E7FF</color>
+    <color name="gradient2">#EDF4FF</color>
+
     <color name="appBackground">#FDF6EB</color>
     <color name="splash_brown">#C89B6B</color>
 

@@ -31,7 +31,7 @@ fun AppLoadingIndicator(
     modifier: Modifier = Modifier,
     color: Color = colorResource(R.color.darkBrown),
     containerColor: Color = Color.Transparent,
-    size: Dp = 24.dp
+    size: Dp
 ) {
     LoadingIndicator(
         modifier = modifier.size(size),
