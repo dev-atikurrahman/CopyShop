@@ -12,11 +12,8 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -25,7 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -33,8 +30,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.atik.coffeeshop.R
-import com.atik.coffeeshop.features.auth.presentation.LoginViewModel.Companion.AUTH_TAG
+import com.atik.coffeeshop.features.auth.presentation.login.LoginViewModel.Companion.AUTH_TAG
 import com.atik.coffeeshop.features.home.explore.presentation.SharedViewModel
 import com.atik.coffeeshop.features.onboarding.presentation.OnboardingScreen
 import com.atik.coffeeshop.navigation.AUTH_GRAPH_ROUTE
@@ -92,66 +88,59 @@ fun SplashNavHost(
             Routes.Profile.route
         )
 
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            SharedTransitionLayout {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    bottomBar = {
-                        BottomBarSection(
-                            showBottomBar = showBottomBar,
-                            navController = navController
-                        )
-                    },
-                    contentWindowInsets = WindowInsets.safeDrawing,
-                    // its status color
-                    containerColor = colorResource(R.color.lightCream)
-                ) { innerPadding ->
-                    NavHost(
-                        navController = navController,
-                        startDestination = currentResolveStart,
-                        route = SPLASH_ROOT_ROUTE,
-                        modifier = Modifier.padding(innerPadding)
-                    ) {
-                        composable(Routes.Onboarding.route) {
-                            OnboardingScreen(
-                                onGetStarted = {
-                                    navController.navigate(Routes.Login.route) {
-                                        popUpTo(Routes.Onboarding.route) { inclusive = true }
-                                    }
+
+        SharedTransitionLayout {
+            Scaffold(
+                modifier = Modifier.fillMaxSize(),
+                bottomBar = {
+                    BottomBarSection(
+                        showBottomBar = showBottomBar,
+                        navController = navController
+                    )
+                },
+                contentWindowInsets = WindowInsets.safeDrawing,
+                containerColor = Color.Transparent
+            ) {
+                NavHost(
+                    navController = navController,
+                    startDestination = currentResolveStart,
+                    route = SPLASH_ROOT_ROUTE,
+                ) {
+                    composable(Routes.Onboarding.route) {
+                        OnboardingScreen(
+                            onGetStarted = {
+                                navController.navigate(Routes.Login.route) {
+                                    popUpTo(Routes.Onboarding.route) { inclusive = true }
                                 }
-                            )
-                        }
-                        authNavGraph(navController = navController)
-
-                        homeNavGraph(
-                            navController = navController,
-                            sharedViewModel = sharedViewModel,
-                            sharedTransitionScope = this@SharedTransitionLayout
+                            }
                         )
-
                     }
+                    authNavGraph(navController = navController)
+
+                    homeNavGraph(
+                        navController = navController,
+                        sharedViewModel = sharedViewModel,
+                        sharedTransitionScope = this@SharedTransitionLayout
+                    )
+
                 }
             }
         }
+
     }
 
 }
 
+
 @Composable
 private fun BottomBarSection(
-    showBottomBar: Boolean,
-    navController: NavController
+    showBottomBar: Boolean, navController: NavController
 ) {
     AnimatedVisibility(
-        visible = showBottomBar,
-        enter = slideInVertically(
+        visible = showBottomBar, enter = slideInVertically(
             initialOffsetY = { fullHeight -> fullHeight },
             animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
-        ) + fadeIn(animationSpec = tween(300)),
-        exit = slideOutVertically(
+        ) + fadeIn(animationSpec = tween(300)), exit = slideOutVertically(
             targetOffsetY = { fullHeight -> fullHeight },
             animationSpec = tween(durationMillis = 250, easing = FastOutSlowInEasing)
         ) + fadeOut(animationSpec = tween(200))

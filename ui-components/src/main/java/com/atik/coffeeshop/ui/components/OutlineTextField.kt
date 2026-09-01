@@ -18,9 +18,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.autofill.ContentType
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.semantics.contentType
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -32,7 +36,7 @@ enum class EndIconMode {
     PASSWORD_TOGGLE
 }
 
-val roundedShape = RoundedCornerShape(8.dp)
+val roundedShape = RoundedCornerShape(12.dp)
 
 @Composable
 fun AuthField(
@@ -41,13 +45,14 @@ fun AuthField(
     label: String,
     modifier: Modifier = Modifier,
     leadingIcon: ImageVector? = null,
-    // trailingIcon: (@Composable (() -> Unit))? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    //visualTransformation: VisualTransformation = VisualTransformation.None,
     shape: Shape = roundedShape,
-    endIconMode: EndIconMode = EndIconMode.NONE
+    endIconMode: EndIconMode = EndIconMode.NONE,
+    isError: Boolean = false,
+    supportingText: (@Composable () -> Unit)? = null
 ) {
     var passwordVisibility by remember { mutableStateOf(false) }
+    val isPasswordField = endIconMode == EndIconMode.PASSWORD_TOGGLE
     val isNotEmpty = value.isNotEmpty()
     val brownColor = colorResource(R.color.darkBrown)
     val grayColor = colorResource(R.color.gray)
@@ -56,13 +61,26 @@ fun AuthField(
     val visibility = Icons.Rounded.Visibility
     val visibilityOff = Icons.Rounded.VisibilityOff
 
+    val effectiveKeyboardOptions = if (isPasswordField) {
+        keyboardOptions.copy(keyboardType = KeyboardType.Password)
+    } else {
+        keyboardOptions
+    }
+
+    val autofillModifier = if (isPasswordField) {
+        Modifier.semantics { contentType = ContentType.Password }
+    } else {
+        Modifier
+    }
+
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { HintText(text = label) },
         modifier = modifier
             .fillMaxWidth()
-            .height(64.dp),
+            .height(64.dp)
+            .then(autofillModifier),
         leadingIcon = leadingIcon?.let { icon ->
             {
                 Icon(
@@ -71,8 +89,7 @@ fun AuthField(
                 )
             }
         },
-        //trailingIcon = trailingIcon,
-        keyboardOptions = keyboardOptions,
+        keyboardOptions = effectiveKeyboardOptions,
         singleLine = true,
         shape = shape,
 
@@ -96,7 +113,7 @@ fun AuthField(
             EndIconMode.PASSWORD_TOGGLE -> {
                 {
                     val icon = if (passwordVisibility) visibility else visibilityOff
-                    IconButton(onClick = { passwordVisibility != passwordVisibility }) {
+                    IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
                         Icon(imageVector = icon, contentDescription = "Toggle password")
                     }
                 }

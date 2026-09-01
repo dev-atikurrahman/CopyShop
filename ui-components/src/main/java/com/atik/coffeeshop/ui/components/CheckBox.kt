@@ -14,7 +14,7 @@ import androidx.compose.ui.res.colorResource
 import com.atik.coffeeshop.ui.R
 
 @Composable
-fun RememberCheckbox(
+fun AppCheckBox(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     label: String,
